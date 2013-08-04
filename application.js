@@ -1,32 +1,32 @@
-
-
-
-
 $(document).ready(function() {
   var todoTemplate = $.trim($('#todo_template').html());
 
   function bindEvents() {
-    $('#todo').on('click',function(e) {
-      if(e.target && e.target.className == 'add')
-      {
-      addTodo();
-      }
-      if(e.target && e.target.className == 'delete')
-      {
-        deleteTodo(e.target)
-      }
-      if(e.target && e.target.className == 'complete')
-      {
-        completeTodo(e.target)
-      }
+    
+    add();
+    remove();
+    complete();
+  }
+
+  function add() {
+    $('.add').on('click', function() {
+      var text = ($('.todo').val());
+      $('.todo_list').append(buildTodo(text));
     })
   }
-    // Bind functions which add, remove, and complete todos to the appropriate
-    // elements
+  
+  function remove() {
+    $(document).on('click', '.delete', function() {
+      $(this).closest('.todo').remove();
+    });
   }
 
-  //Create functions to add, remove and complete todosgi
-
+    function complete() {
+    $(document).on('click', '.complete', function() {
+      $(this).parent().text("Complete!");
+    });
+    
+  }
   
 
   function buildTodo(todoName) {
