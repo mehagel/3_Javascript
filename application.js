@@ -12,23 +12,24 @@ $(document).ready(function() {
     $('.add').on('click', function() {
       var text = ($('.todo').val());
       $('.todo_list').append(buildTodo(text));
+      $('#todo_input').val('').focus();
+      $
     })
   }
   
   function remove() {
-    $(document).on('click', '.delete', function() {
+    $(".todo_list").on('click', '.delete', function() {
       $(this).closest('.todo').remove();
     });
   }
 
     function complete() {
-    $(document).on('click', '.complete', function() {
-      $(this).parent().text("Complete!");
+    $(".todo_list").on('click', '.complete', function() {
+      $(this).text("Complete!");
     });
     
   }
   
-
   function buildTodo(todoName) {
     // Creates an jQueryDOMElement from the todoTemplate.
     var $todo = $(todoTemplate);
@@ -38,6 +39,5 @@ $(document).ready(function() {
     return $todo;
   }
   
-
   bindEvents();
 });
